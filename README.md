@@ -4,13 +4,13 @@
 This project uses Azure Vision to analyze an image using a link.
 
 ## Functionality:
-### Will accept a url as input to get an image and send for analysis.
-### There is a method to generate a thumbnail of the image provided.
-### Results are presented for user.
+### [x] Will accept a url as input to get an image and send for analysis.
+### [x] There is a method to generate a thumbnail of the image provided.
+### [x] Results are presented for user.
 
 ## To do:
-### Add error handling in case the link does not lead to an image
-### Fix layout to be more personal
+### [ ] Add error handling in case the link does not lead to an image
+### [ ] Fix layout to be more personal
 
 
 ## Demo
