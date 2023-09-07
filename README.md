@@ -3,6 +3,11 @@
 ## MVC-app with Azure Vision
 This project uses Azure Vision to analyze an image using a link.
 
+To make this work you need to do the following steps:
+-Create a resource in Azure portal with Cognitive Services
+-Once deployed, add the Key and the endpoint to the appsettings.json file
+-Enjoy! :)
+
 ## Functionality:
 ### [x] Will accept a url as input to get an image and send for analysis.
 ### [x] There is a method to generate a thumbnail of the image provided.
