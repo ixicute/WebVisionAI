@@ -1,0 +1,28 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 text-center">
+            <h1>Image Analysis with Azure Vision AI</h1>
+            <p>
+                Welcome to our Image Analysis tool. Simply provide a link to an image, and our platform, powered by Azure Vision AI, will process and present insightful data regarding the contents of your image. It's AI magic, just a click away!
+            </p>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form asp-action="AnalyzeImagePost" asp-controller="Home" method="post" class="form-inline justify-content-center">
+                <div class="input-group mb-2">
+                    <input type="text" id="imageUrl" name="imageUrl" class="form-control" placeholder="Enter image link..." />
+                    <div class="input-group-append">
+                        <button type="submit" class="btn btn-primary">Analyze</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>

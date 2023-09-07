@@ -1,0 +1,89 @@
+﻿@model ImageAnalysisViewModel
+
+@functions {
+    public string CapitalizeFirstLetter(string input)
+    {
+        if (string.IsNullOrEmpty(input)) return input;
+        return char.ToUpper(input[0]) + input.Substring(1);
+    }
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 text-center">
+            <h1>Image Analysis Results</h1>
+            <p>
+                Below are the insights generated from the provided image, processed using advanced techniques with Azure Vision AI. 
+                Our platform has analyzed the image for various visual features, including description, categories, tags, brands, and detected objects.
+            </p>
+        </div>
+
+        <br />
+
+        <div class="text-center">
+            <h2>Description</h2>
+            <p>@CapitalizeFirstLetter(string.IsNullOrWhiteSpace(Model.Description) ? "Unable to understand the image" : Model.Description)</p>
+        </div>
+
+        <div class="text-center mt-4">
+            <a asp-action="Index" class="btn btn-primary">Try Another Image</a>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-8">
+            <!-- Main content should be here -->
+
+            <div class="mt-4">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Detected Data</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>Tags</td>
+                            <td>@(Model.Tags.Any() ? string.Join(", ", Model.Tags) : "Not detected")</td>
+                        </tr>
+                        <tr>
+                            <td>Categories</td>
+                            <td>@(Model.Categories.Any() ? string.Join(", ", Model.Categories.Select(c => c.Replace("_", ""))) : "Not detected")</td>
+                        </tr>
+                        <tr>
+                            <td>Brands</td>
+                            <td>@(Model.Brands.Any() ? string.Join(", ", Model.Brands) : "Not detected")</td>
+                        </tr>
+                        <tr>
+                            <td>Objects</td>
+                            <td>@(Model.Objects.Any() ? string.Join(", ", Model.Objects.Select(o => o.ObjectProperty)) : "Not detected")</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <!-- Aside content should be here -->
+            <div class="card mb-3">
+                <div class="card-header text-center">
+                    Original Image
+                </div>
+                <div class="d-flex justify-content-center align-items-center">
+                    <img src="@Model.ImageUrl" class="img-fluid" width="340" alt="Uploaded Image">
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header text-center">
+                    Thumbnail
+                </div>
+                <div class="d-flex justify-content-center align-items-center">
+                    <img src="@Model.ThumbnailPath" class="img-fluid" width="170" alt="Generated Thumbnail">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
